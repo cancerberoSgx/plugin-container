@@ -7,6 +7,10 @@
  
  Powerfull and simple pattern to add extension points to your APIs or frameworks.  
 
+# API Reference
+
+https://cancerberosgx.github.io/plugin-container/index.html
+
 # Install 
 
 ```sh
