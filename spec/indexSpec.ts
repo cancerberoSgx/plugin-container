@@ -1,14 +1,14 @@
-import {PluginContainer} from '../src/index'
+import { PluginContainer } from '../src/index';
 
 describe('Plugin Container', () => {
   let plugins;
   // two plugin that perform some modification in a string.
-  let plugin1
-  let plugin2
-  let str
+  let plugin1;
+  let plugin2;
+  let str;
   let output;
 
-  it('init', ()=>{
+  it('init', () => {
     plugin1 = {
       name: 'p1',
       priority: 1,
@@ -24,7 +24,7 @@ describe('Plugin Container', () => {
       },
     };
     str = 'hello world blabla world';
-  })
+  });
 
   it('registration of prioritized plugins', () => {
     plugins = new PluginContainer();

@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es3",
+    "outDir": "build/es3",
+    "declaration": false,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "module": "amd",
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "sourceMap": true,
+    "out": "build/es3/spec.js",
+    "experimentalDecorators": true
+  },
+  "include": [
+   "spec"
+  ]
+} 
+
+

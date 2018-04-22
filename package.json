@@ -7,16 +7,31 @@
   "scripts": {
     "watch": "tsc --watch",
     "build": "tsc",
-    "clean": "rm -rf build",
+    "build-es3": "tsc --project tsconfig_es3.json; tsc --project tsconfig_es3-spec.json; cp spec/assets/*.html build/es3; cat spec/assets/amd-exports-to-window-globals.js > build/es3/plugin-container-globals.js; cat build/es3/plugin-container-amd.js >> build/es3/plugin-container-globals.js",
     "test": "ts-node -r tsconfig-paths/register node_modules/jasmine/bin/jasmine",
-    "test-js": "npm run clean && tsc && jasmine --config=spec/support/jasmine-js.json",
+    "test-js": "tsc && jasmine --config=spec/support/jasmine-js.json",
+    "test-es3": "npm run build-es3 && jasmine --config=spec/support/jasmine-es3.json",
     "prepare": "tsc",
-    "doc": "tsc && typedoc --options typedoc.ts"
+    "doc": "tsc && typedoc --options typedoc.ts",
+    "lint": "tslint src/**/*.ts",
+    "lint-fix": "tslint --fix src/**/*.ts",
+    "tsc": "rm -rf types docs && tsc --project typedoc.js",
+    "clean": "rm -rf types docs build"
   },
   "files": [
-    "build", "types", "src", "spec"
+    "build",
+    "types",
+    "src",
+    "spec"
   ],
-  "keywords": ["extension", "observer", "emitter", "event", "plugin", "plugin container"],
+  "keywords": [
+    "extension",
+    "observer",
+    "emitter",
+    "event",
+    "plugin",
+    "plugin container"
+  ],
   "author": "Sebastian Gurin",
   "license": "ISC",
   "devDependencies": {
@@ -24,8 +39,11 @@
     "jasmine": "^3.1.0",
     "ts-node": "^6.0.0",
     "tsconfig-paths": "^3.3.1",
+    "tslint": "^5.9.1",
+    "tslint-config-airbnb": "^5.8.0",
+    "typedoc": "^0.11.1",
     "typescript": "^2.8.3"
   },
   "dependencies": {},
-  "repository": "https://github.com/cancerberoSgx/plugin-container" 
+  "repository": "https://github.com/cancerberoSgx/plugin-container"
 }

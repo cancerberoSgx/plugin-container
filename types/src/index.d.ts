@@ -2,10 +2,11 @@
  * The PluginContainer pattern is very similar to events listeners pattern but
  * designed to let listeners hook more appropiately into some processing. One or more Plugin objects
  * are installed into a PluginContainer and the owner of the container runs container.executeAll()
- * Registered plugins will be then executed by priority order and if any input is passed it will transformed
- *
+ * Registered plugins will be then executed by priority order and if any input is passed
+ * it will transformed
  */
 export declare class PluginContainer {
+    static DEFAULT_PRIORITY: number;
     plugins: any[];
     constructor();
     initialize(): void;
@@ -23,32 +24,34 @@ export declare class PluginContainer {
      * @return {Any} the output, if any
      */
     executeAllWithContext(context?: any): any | void;
-    private _getPluginName(plugin);
     /**
      * install add a new plugin
      */
-    install(plugin: Plugin): void;
+    install(plugin: IPlugin): void;
     /**
-     *  Remove an installed plugin
-     * @param plugin
+     * Remove an installed plugin
      */
-    uninstall(plugin: Plugin | string): void;
+    uninstall(plugin: IPlugin | string): void;
+    private getPluginName(plugin);
 }
 /**
- * Plugin installable in a PluginContainer. There is no concrete API, only an execute method and . It's up to the users to define de Plugin semantics
+ * Plugin installable in a PluginContainer. There is no concrete API, only an execute method and .
+ * It's up to the users to define de Plugin semantics
  */
-export interface Plugin {
+export interface IPlugin {
     /**
      *  name used to identify the plugins in the container
      */
     name: string;
     /**
-     * @method execute @param {Any} input @return {Any} pugins have the possibility of
-     * @return {Any} will do some modifications to any passed object and will return these modifications - implementer freedom
+     * @return pugins have the possibility of, optionally, modify the input somehow
+     * so next plugins in the container will receive
+     * its modifications will do some modifications to any passed object and will return these
+     * modifications - implementer freedom
      */
-    execute: (any) => any;
+    execute: (input: any) => any;
     /**
      * priority lower numbers will execute before higher numbers
      */
-    priority: number;
+    priority?: number;
 }

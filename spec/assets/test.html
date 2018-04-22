@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>plugin-container browser test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.1.0/jasmine.min.css">
+</head>
+
+<body>
+
+<!-- Usage example in HTML. We are loading it as a AMD module  -->
+<script src="https://cdn.jsdelivr.net/npm/almond@0.3.3/almond.min.js"></script>
+<script src="plugin-container-amd.js"></script>
+<script>
+var PluginContainer = require('PluginContainer')
+var plugins = new PluginContainer();
+plugins.install({
+  name: 'secondPlugin',
+  priority: 2,
+  execute: function(input) {
+    return 'avacadabra'+input+'flumflumblablasrpic';
+  },
+});
+plugins.install({
+  name: 'first plugin',
+  priority: 1,
+  execute: function(input) {
+    return input.replace(/blabla/gi, 'loremipsum');
+  },
+});
+var output = plugins.executeAll('hello world blabla world');
+console.log(output)
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.1.0/jasmine.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.1.0/jasmine-html.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.1.0/boot.min.js"></script>
+
+<script src="spec.js"></script>
+
+<!-- require specs for execution -->
+<script>
+require('spec/indexSpec')
+require('spec/errorsSpec')
+</script>
+
+</body>
+
+</html>
