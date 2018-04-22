@@ -1,8 +1,8 @@
 # Plugin container
 
-Plugin-container is a design pattern similar to Observer, but with ore embphasis on data prosessing, states, and cancelable actions
-
-Very usefull and simple pattern to add extensibility points to your APIs or frameworks.  
+ Plugin-container is a design pattern similar to Observer, but with ore emphasis on data processing, state change, and cancelable actions.   
+ 
+ Powerfull and simple pattern to add extension points to your APIs or frameworks.  
 
 # Install 
 

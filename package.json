@@ -23,5 +23,6 @@
     "tsconfig-paths": "^3.3.1",
     "typescript": "^2.8.3"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "repository": "https://github.com/cancerberoSgx/plugin-container" 
 }
