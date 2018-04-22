@@ -3,21 +3,9 @@ import {PluginContainer} from '../src/index'
 describe('Plugin Container', () => {
   let plugins;
   // two plugin that perform some modification in a string.
-  let plugin1 = {
-    name: 'p1',
-    priority: 1,
-    execute(input) {
-      return input.replace(/blabla/gi, 'loremipsum');
-    },
-  };
-  let plugin2 = {
-    name: 'p2',
-    priority: 2,
-    execute(input) {
-      return `avacadabra${input}flumflumblablasrpic`;
-    },
-  };
-  let str = 'hello world blabla world';
+  let plugin1
+  let plugin2
+  let str
   let output;
 
   it('init', ()=>{
@@ -40,7 +28,6 @@ describe('Plugin Container', () => {
 
   it('registration of prioritized plugins', () => {
     plugins = new PluginContainer();
-    plugins.initialize();
     str = 'hello world blabla world';
     output = plugins.executeAll(str);
     expect(output).toBe(str);

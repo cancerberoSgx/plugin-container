@@ -1,15 +1,15 @@
 {
   "name": "plugin-container",
   "version": "1.0.0",
-  "description": "Plugin-container pattern is very similar to the observer patterns",
+  "description": "Plugin-container is a design pattern similar to Observer, but with ore embphasis on data prosessing, states, and cancelable actions",
   "main": "dist/src/index.js",
   "types": "types/src/index.d.ts",
   "scripts": {
     "watch": "tsc --watch",
     "build": "tsc",
     "clean": "rm -rf build",
-    "test": "ts-node -r tsconfig-paths/register node_modules/jasmine/bin/jasmine",  
-    "test-js": "npm run clean && tsc && jasmine --config=spec/support/jasmine-js.json",   
+    "test": "ts-node -r tsconfig-paths/register node_modules/jasmine/bin/jasmine",
+    "test-js": "npm run clean && tsc && jasmine --config=spec/support/jasmine-js.json",
     "prepare": "tsc",
     "doc": "tsc && typedoc --options typedoc.ts"
   },
