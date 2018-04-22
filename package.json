@@ -1,8 +1,8 @@
 {
   "name": "plugin-container",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Plugin-container is a design pattern similar to Observer, but with ore embphasis on data prosessing, states, and cancelable actions",
-  "main": "dist/src/index.js",
+  "main": "build/src/index.js",
   "types": "types/src/index.d.ts",
   "scripts": {
     "watch": "tsc --watch",
@@ -13,7 +13,10 @@
     "prepare": "tsc",
     "doc": "tsc && typedoc --options typedoc.ts"
   },
-  "keywords": [],
+  "files": [
+    "build", "types", "src", "spec"
+  ],
+  "keywords": ["extension", "observer", "emitter", "event", "plugin", "plugin container"],
   "author": "Sebastian Gurin",
   "license": "ISC",
   "devDependencies": {
