@@ -1,0 +1,27 @@
+{
+  "name": "plugin-container",
+  "version": "1.0.0",
+  "description": "Plugin-container pattern is very similar to the observer patterns",
+  "main": "dist/src/index.js",
+  "types": "types/src/index.d.ts",
+  "scripts": {
+    "watch": "tsc --watch",
+    "build": "tsc",
+    "clean": "rm -rf build",
+    "test": "ts-node -r tsconfig-paths/register node_modules/jasmine/bin/jasmine",  
+    "test-js": "npm run clean && tsc && jasmine --config=spec/support/jasmine-js.json",   
+    "prepare": "tsc",
+    "doc": "tsc && typedoc --options typedoc.ts"
+  },
+  "keywords": [],
+  "author": "Sebastian Gurin",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jasmine": "^2.8.6",
+    "jasmine": "^3.1.0",
+    "ts-node": "^6.0.0",
+    "tsconfig-paths": "^3.3.1",
+    "typescript": "^2.8.3"
+  },
+  "dependencies": {}
+}
