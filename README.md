@@ -30,8 +30,8 @@ plugins.install({
   },
 });
 
-const input = 'hello world blabla world';
-output = plugins.executeAll((str = 'hello world blabla world'));
+const output = plugins.executeAll('hello world blabla world');
+console.log(output)
 // the output is the transformation, in orther, of all the plugins, in this case:
 // 'avacadabrahello world loremipsum worldflumflumloremipsumsrpic'
 ```
