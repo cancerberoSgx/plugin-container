@@ -10,6 +10,6 @@ module.exports = {
   excludeProtected: true,
   excludeExternals: true,
   readme: 'README.md',
-  name: 'perplexed-wars',
+  name: 'plugin-container',
   ignoreCompilerErrors: true,
 };

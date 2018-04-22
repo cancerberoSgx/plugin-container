@@ -24,9 +24,9 @@ describe('Plugin Container', () => {
       },
     };
     str = 'hello world blabla world';
-  });
+  // });
 
-  it('registration of prioritized plugins', () => {
+  // it('registration of prioritized plugins', () => {
     plugins = new PluginContainer();
     str = 'hello world blabla world';
     output = plugins.executeAll(str);
@@ -34,15 +34,15 @@ describe('Plugin Container', () => {
     plugins.install(plugin1);
     output = plugins.executeAll(str);
     expect(output).toBe('hello world loremipsum world');
-  });
+  // });
 
-  it('plugin uninstall', () => {
+  // it('plugin uninstall', () => {
     plugins.uninstall(plugin1);
     output = plugins.executeAll(str);
     expect(output).toBe(str);
-  });
+  // });
 
-  it('plugin are executed according priority', () => {
+  // it('plugin are executed according priority', () => {
     plugins.install(plugin2);
     plugins.install(plugin1);
     output = plugins.executeAll(str);

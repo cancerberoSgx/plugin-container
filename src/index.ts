@@ -1,4 +1,3 @@
-/// <amd-module name="plugin-container"/>
 /**
  * The PluginContainer pattern is very similar to events listeners pattern but
  * designed to let listeners hook more appropiately into some processing. One or more Plugin objects
