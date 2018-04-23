@@ -2,3 +2,5 @@ node_modules
 package-lock.json
 build
 types/spec
+coverage
+.nyc_output

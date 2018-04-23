@@ -16,7 +16,9 @@
     "lint": "tslint src/**/*.ts",
     "lint-fix": "tslint --fix src/**/*.ts",
     "tsc": "rm -rf types docs && tsc --project typedoc.js",
-    "clean": "rm -rf types docs build"
+    "clean": "rm -rf types docs build",
+    "coverage-html-report": "rm -rf coverage; nyc --clean -r lcov -e .ts -x \"*Spec.ts\" ts-node -r tsconfig-paths/register node_modules/jasmine/bin/jasmine --config=./spec/support/jasmine.json",
+    "coverage-report": "nyc --clean -r json -e .ts -x \"**/*Spec.ts\" ts-node -r tsconfig-paths/register node_modules/jasmine/bin/jasmine --config=./spec/support/jasmine.json"
   },
   "files": [
     "build",
@@ -42,7 +44,8 @@
     "tslint": "^5.9.1",
     "tslint-config-airbnb": "^5.8.0",
     "typedoc": "^0.11.1",
-    "typescript": "^2.8.3"
+    "typescript": "^2.8.3",
+    "nyc": "^11.6.0"
   },
   "dependencies": {},
   "repository": "https://github.com/cancerberoSgx/plugin-container"
