@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/cancerberoSgx/plugin-container.png?branch=master)](https://travis-ci.org/cancerberoSgx/plugin-container) [![appveyor Build status](https://ci.appveyor.com/api/projects/status/w3ynfan159ejobkv/branch/master?svg=true)](https://ci.appveyor.com/project/cancerberoSgx/plugin-container/branch/master) [![codecov](https://codecov.io/gh/cancerberoSgx/plugin-container/branch/master/graph/badge.svg)](https://codecov.io/gh/cancerberoSgx/plugin-container/tree/master/packages/plugin-container/src) [![dependencies](https://david-dm.org/cancerberosgx/plugin-container/status.svg)](https://david-dm.org/cancerberosgx/plugin-container) [![devDependencies](https://david-dm.org/cancerberosgx/plugin-container/dev-status.svg)](https://david-dm.org/cancerberosgx/plugin-container-dev#info=devDependencies)
+[![Build Status](https://travis-ci.org/cancerberoSgx/plugin-container.png?branch=master)](https://travis-ci.org/cancerberoSgx/plugin-container) [![appveyor Build status](https://ci.appveyor.com/api/projects/status/w3ynfan159ejobkv/branch/master?svg=true)](https://ci.appveyor.com/project/cancerberoSgx/plugin-container/branch/master) [![codecov](https://codecov.io/gh/cancerberoSgx/plugin-container/branch/master/graph/badge.svg)](https://codecov.io/gh/cancerberoSgx/plugin-container/tree/master/src) [![dependencies](https://david-dm.org/cancerberosgx/plugin-container/status.svg)](https://david-dm.org/cancerberosgx/plugin-container) [![devDependencies](https://david-dm.org/cancerberosgx/plugin-container/dev-status.svg)](https://david-dm.org/cancerberosgx/plugin-container-dev#info=devDependencies)
 
 
-# Plugin container
+# Plugin Container
 
  Plugin-container is a design pattern similar to Observer, but with ore emphasis on data processing, state change, and cancelable actions.   
  
