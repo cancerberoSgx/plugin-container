@@ -12,7 +12,7 @@
     "test-js": "tsc && jasmine --config=spec/support/jasmine-js.json",
     "test-es3": "npm run build-es3 && jasmine --config=spec/support/jasmine-es3.json",
     "prepare": "tsc",
-    "doc": "tsc && typedoc --options typedoc.ts",
+    "doc": "tsc && typedoc --plugin typedoc-plugin-as-member-of --mode file --out docs src/index.ts",
     "lint": "tslint src/**/*.ts",
     "lint-fix": "tslint --fix src/**/*.ts",
     "tsc": "rm -rf types docs && tsc --project typedoc.js",
@@ -39,13 +39,14 @@
   "devDependencies": {
     "@types/jasmine": "^2.8.6",
     "jasmine": "^3.1.0",
+    "nyc": "^11.6.0",
     "ts-node": "^6.0.0",
     "tsconfig-paths": "^3.3.1",
     "tslint": "^5.9.1",
     "tslint-config-airbnb": "^5.8.0",
     "typedoc": "^0.11.1",
-    "typescript": "^2.8.3",
-    "nyc": "^11.6.0"
+    "typedoc-plugin-as-member-of": "^1.0.1",
+    "typescript": "^2.8.3"
   },
   "dependencies": {},
   "repository": "https://github.com/cancerberoSgx/plugin-container"

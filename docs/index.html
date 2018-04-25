@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>perplexed-wars</title>
+	<title>plugin-container</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">perplexed-wars</a>
+					<a href="index.html" class="title">plugin-container</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -54,7 +54,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> perplexed-wars</h1>
+			<h1> plugin-container</h1>
 		</div>
 	</div>
 </header>
@@ -62,10 +62,12 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<p><a href="https://travis-ci.org/cancerberoSgx/plugin-container"><img src="https://travis-ci.org/cancerberoSgx/plugin-container.png?branch=master" alt="Build Status"></a> <a href="https://ci.appveyor.com/project/cancerberoSgx/plugin-container/branch/master"><img src="https://ci.appveyor.com/api/projects/status/w3ynfan159ejobkv/branch/master?svg=true" alt="appveyor Build status"></a> <a href="https://codecov.io/gh/cancerberoSgx/plugin-container/tree/master/packages/plugin-container/src"><img src="https://codecov.io/gh/cancerberoSgx/plugin-container/branch/master/graph/badge.svg" alt="codecov"></a> <a href="https://david-dm.org/cancerberosgx/plugin-container?path=packages/plugin-container"><img src="https://david-dm.org/cancerberosgx/plugin-container/status.svg" alt="dependencies"></a> <a href="https://david-dm.org/cancerberosgx/plugin-container-dev?path=packages/plugin-container#info=devDependencies"><img src="https://david-dm.org/cancerberosgx/plugin-container/dev-status.svg" alt="devDependencies"></a></p>
-				<h1 id="plugin-container">Plugin container</h1>
+				<p><a href="https://travis-ci.org/cancerberoSgx/plugin-container"><img src="https://travis-ci.org/cancerberoSgx/plugin-container.png?branch=master" alt="Build Status"></a> <a href="https://ci.appveyor.com/project/cancerberoSgx/plugin-container/branch/master"><img src="https://ci.appveyor.com/api/projects/status/w3ynfan159ejobkv/branch/master?svg=true" alt="appveyor Build status"></a> <a href="https://codecov.io/gh/cancerberoSgx/plugin-container/tree/master/src"><img src="https://codecov.io/gh/cancerberoSgx/plugin-container/branch/master/graph/badge.svg" alt="codecov"></a> <a href="https://david-dm.org/cancerberosgx/plugin-container"><img src="https://david-dm.org/cancerberosgx/plugin-container/status.svg" alt="dependencies"></a> <a href="https://david-dm.org/cancerberosgx/plugin-container-dev#info=devDependencies"><img src="https://david-dm.org/cancerberosgx/plugin-container/dev-status.svg" alt="devDependencies"></a></p>
+				<h1 id="plugin-container">Plugin Container</h1>
 				<p> Plugin-container is a design pattern similar to Observer, but with ore emphasis on data processing, state change, and cancelable actions.   </p>
 				<p> Powerfull and simple pattern to add extension points to your APIs or frameworks.  </p>
+				<h1 id="api-reference">API Reference</h1>
+				<p><a href="https://cancerberosgx.github.io/plugin-container/index.html">https://cancerberosgx.github.io/plugin-container/index.html</a></p>
 				<h1 id="install">Install</h1>
 				<pre><code class="lang-sh">npm install --save plugin-container
 </code></pre>
@@ -92,10 +94,21 @@ plugins.install({
 <span class="hljs-comment">// the output is the transformation, in orther, of all the plugins, in this case:</span>
 <span class="hljs-comment">// 'avacadabrahello world loremipsum worldflumflumloremipsumsrpic'</span>
 </code></pre>
-				<h1 id="compatibility">Compatibility</h1>
-				<ul>
-					<li>This library is tested on node-js and supports both vanilla JavaScript and TypeScrit. It should also work on any browser</li>
-				</ul>
+				<h1 id="use-it-in-the-browser">Use it in the browser</h1>
+				<p>plugin-container supports very old browsers. Just use files in <code>build/es3</code>, for example, after loading plugin-container-globals.js the global variable <code>PluginContainer</code> will be available: </p>
+				<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"plugin-container-globals.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+<span class="hljs-keyword">var</span> plugins = <span class="hljs-keyword">new</span> PluginContainer();
+....</span>
+</code></pre>
+				<p>Or you can use the AMD version if you want: </p>
+				<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/almond@0.3.3/almond.min.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"plugin-container-amd.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+<span class="hljs-keyword">var</span> PluginContainer = <span class="hljs-built_in">require</span>(<span class="hljs-string">'PluginContainer'</span>)
+<span class="hljs-keyword">var</span> plugins = <span class="hljs-keyword">new</span> PluginContainer();
+....</span>
+</code></pre>
 				<h1 id="ideas-todos">Ideas / TODOs</h1>
 				<h2 id="errors">Errors</h2>
 				<p>if a plugin.execute throws an exception - what the container should do ? </p>
@@ -156,6 +169,24 @@ plugins.install({
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/iplugin.html" class="tsd-kind-icon">IPlugin</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ipluginbeforeexecuteevent.html" class="tsd-kind-icon">IPlugin<wbr>Before<wbr>Execute<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iplugincontainer.html" class="tsd-kind-icon">IPlugin<wbr>Container</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ipluginexceptionevent.html" class="tsd-kind-icon">IPlugin<wbr>Exception<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ipluginsuccessevent.html" class="tsd-kind-icon">IPlugin<wbr>Success<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/plugincontainerconfig.html" class="tsd-kind-icon">Plugin<wbr>Container<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/pluginexceptioneventdata.html" class="tsd-kind-icon">Plugin<wbr>Exception<wbr>Event<wbr>Data</a>
 					</li>
 				</ul>
 			</nav>

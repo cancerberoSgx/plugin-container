@@ -12,4 +12,5 @@ module.exports = {
   readme: 'README.md',
   name: 'plugin-container',
   ignoreCompilerErrors: true,
+  plugin: 'typedoc-plugin-as-member-of',
 };
