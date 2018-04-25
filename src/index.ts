@@ -77,8 +77,8 @@ export interface PluginContainerConfig{
 }
 
 /**
- * Plugin installable in a PluginContainer. There is no concrete API, only an execute method and .
- * It's up to the users to define de Plugin semantics
+ * Plugin that can be installed in a PluginContainer (see [[install]]). There is no concrete API, only an execute method. 
+ * It's up to the users to define de Plugin semantics and collaboration between plugins of the same container to resolve a problem.
  */
 export interface IPlugin {
   /**
@@ -90,7 +90,7 @@ export interface IPlugin {
    * @param input the data transformed by the previous plugin that this plugin can also transform to be passed to the next one. 
    * @return if any, the input data provided by the previous plugin, transformed somehow and passed to the next plugin. 
    */
-  execute: (input?:any) => any;
+  execute(input?:any) : any;
   /**
    * priority lower numbers will execute before higher numbers
    */
