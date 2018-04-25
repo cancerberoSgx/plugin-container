@@ -10,7 +10,7 @@ export interface PluginExceptionEventData {
 export class PluginContainer extends EventEmitter implements IPluginContainer {
 
  
-  constructor(config?:PluginContainerConfig) {
+  private constructor(config?:IPluginContainerConfig) {
     super();
     this.plugins = [];
     this.config = Object.assign({}, this.defaultConfig, config || {});
@@ -20,14 +20,16 @@ export class PluginContainer extends EventEmitter implements IPluginContainer {
 
   // public static 'plugin-exception': 'plugin-exception' = 'plugin-exception';
 
+  public static create(config?:IPluginContainerConfig):IPluginContainer {
+    return new PluginContainer(config);
+  }
 
-
-  private config: PluginContainerConfig;
+  private config: IPluginContainerConfig;
   public static DEFAULT_PRIORITY: number = 5;
 
   private plugins: IPlugin[];
 
-  private defaultConfig:PluginContainerConfig = {
+  private defaultConfig:IPluginContainerConfig = {
     onErrorPolicy: 'continue',
   };
 
@@ -54,11 +56,11 @@ export class PluginContainer extends EventEmitter implements IPluginContainer {
     return value;
   }
   
-
   public install(plugin: IPlugin): void {
+    // TODO: emit before - after plugin install event
     plugin.priority = plugin.priority || PluginContainer.DEFAULT_PRIORITY;
     this.plugins.push(plugin);
-    this.plugins = this.plugins.sort((a, b) => (a.priority < b.priority ? 1 : -1));
+    this.plugins = this.plugins.sort((a, b) => (a.priority < b.priority ? -1 : 1));
   }
 
   public uninstall(plugin: IPlugin|string): void {
@@ -72,10 +74,13 @@ export class PluginContainer extends EventEmitter implements IPluginContainer {
 
 }
 
-export interface PluginContainerConfig{
+export interface IPluginContainerConfig{
   onErrorPolicy: 'continue'|'break'|'throw';
 }
 
+export function create(config?:IPluginContainerConfig):IPluginContainer {
+  return PluginContainer.create(config);
+}
 /**
  * Plugin that can be installed in a PluginContainer (see [[install]]). There is no concrete API, only an execute method. 
  * It's up to the users to define de Plugin semantics and collaboration between plugins of the same container to resolve a problem.

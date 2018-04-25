@@ -6,7 +6,8 @@ export interface PluginExceptionEventData {
     input: any;
 }
 export declare class PluginContainer extends EventEmitter implements IPluginContainer {
-    constructor(config?: PluginContainerConfig);
+    private constructor();
+    static create(config?: IPluginContainerConfig): IPluginContainer;
     private config;
     static DEFAULT_PRIORITY: number;
     private plugins;
@@ -16,9 +17,10 @@ export declare class PluginContainer extends EventEmitter implements IPluginCont
     uninstall(plugin: IPlugin | string): void;
     private getPluginName(plugin);
 }
-export interface PluginContainerConfig {
+export interface IPluginContainerConfig {
     onErrorPolicy: 'continue' | 'break' | 'throw';
 }
+export declare function create(config?: IPluginContainerConfig): IPluginContainer;
 /**
  * Plugin that can be installed in a PluginContainer (see [[install]]). There is no concrete API, only an execute method.
  * It's up to the users to define de Plugin semantics and collaboration between plugins of the same container to resolve a problem.

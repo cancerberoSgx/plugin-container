@@ -1,44 +1,60 @@
-import { PluginContainer } from '../src/index';
+import { create, IPluginContainer, IPluginContainerConfig } from '../src/index';
 
 describe('errors in plugins', () => {
-  let container:PluginContainer;
-  beforeEach(() => {
-    container = new PluginContainer();
-  });
-  
-  it('by default, plugins throwing exceptions should allow the rest of plugins to execute', () => {
+  let container:IPluginContainer;
+ 
+  function createContainerAndInstallPlugins(config?:IPluginContainerConfig) {
+    container = create(config);
     container.install({
       name: 'thrower plugin',
-      priority: 1,
+      priority: 2,
       execute(input:any) {
-        input.badplugingreets = 'hello from bad';
+        input.badPluginGreets = 'helloFromBadPlugin';
         throw Error('thrower!');
       },
     });
     container.install({
       name: 'good plugin',
-      priority: 2,
+      priority: 3,
       execute(input:any) {
-        input.goodPluginGreets = 'hellofromgoodone';
+        input.goodPluginGreets = 'helloFromGoodOne';
         return input;
       },
     });
     container.install({
-      name: 'good pluginbefore',
-      priority: 0,
+      name: 'good firstPlugin',
+      priority: 1,
       execute(input:any) {
-        input.pluginbefore = 'pluginbefore';
+        input.firstPlugin = 'firstPluginGreet';
         return input;
       },
     });
+  }
+
+  it('by default, plugins throwing exceptions should allow the rest of plugins to execute', () => {
+    createContainerAndInstallPlugins();
+    const obj:any = {};
     try {
-      const obj:any = {};
       const result = container.executeAll(obj);
-      expect(obj.goodPluginGreets).toBe('hellofromgoodone');
+      expect(obj.goodPluginGreets).toBe('helloFromGoodOne');
+      expect(obj.firstPlugin).toBe('firstPluginGreet');
+      expect(obj.badPluginGreets).toBe('helloFromBadPlugin');
     } catch (error) {
       fail(error);
     }
+  });
 
+  it('onErrorPolicy==break should not throw but should now allow following plugins to execute', () => {
+    createContainerAndInstallPlugins({ onErrorPolicy: 'break' });
+    const obj:any = {};
+    try {
+      const result = container.executeAll(obj);
+      expect(obj.firstPlugin).toBe('firstPluginGreet');
+      expect(obj.goodPluginGreets).toBe(undefined);
+      expect(obj.badPluginGreets).toBe('helloFromBadPlugin');
+    } catch (error) {
+      fail(error);
+    }
   });
 
   // TODO: a sync plugin that throws inside a settimeout

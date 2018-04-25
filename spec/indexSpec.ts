@@ -1,11 +1,11 @@
-import { PluginContainer } from '../src/index';
+import { create, IPlugin, IPluginContainer } from '../src/index';
 
 describe('Plugin Container', () => {
-  let plugins;
+  let plugins:IPluginContainer;
   // two plugin that perform some modification in a string.
-  let plugin1;
-  let plugin2;
-  let str;
+  let plugin1:IPlugin;
+  let plugin2:IPlugin;
+  let str:string;
   let output;
 
   it('init', () => {
@@ -27,7 +27,7 @@ describe('Plugin Container', () => {
   // });
 
   // it('registration of prioritized plugins', () => {
-    plugins = new PluginContainer();
+    plugins = create();
     str = 'hello world blabla world';
     output = plugins.executeAll(str);
     expect(output).toBe(str);
@@ -46,7 +46,7 @@ describe('Plugin Container', () => {
     plugins.install(plugin2);
     plugins.install(plugin1);
     output = plugins.executeAll(str);
-    expect(output).toBe('avacadabrahello world loremipsum worldflumflumloremipsumsrpic');
+    expect(output).toBe('avacadabrahello world loremipsum worldflumflumblablasrpic');
     // delete all
     plugins.uninstall(plugin1);
     plugins.uninstall(plugin2);
@@ -56,6 +56,6 @@ describe('Plugin Container', () => {
     plugins.install(plugin1);
     plugins.install(plugin2);
     output = plugins.executeAll(str);
-    expect(output).toBe('avacadabrahello world loremipsum worldflumflumloremipsumsrpic');
+    expect(output).toBe('avacadabrahello world loremipsum worldflumflumblablasrpic');
   });
 });
