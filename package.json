@@ -1,6 +1,6 @@
 {
   "name": "plugin-container",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Plugin-container is a design pattern similar to Observer, but with ore embphasis on data prosessing, states, and cancelable actions",
   "main": "build/src/index.js",
   "types": "types/src/index.d.ts",
