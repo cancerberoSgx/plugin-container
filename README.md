@@ -5,11 +5,11 @@
 
  Plugin-container is a design pattern similar to Observer, but with ore emphasis on data processing, state change, and cancelable actions.   
  
- Powerfull and simple pattern to add extension points to your APIs or frameworks.  
+ Powerful and simple pattern to add extension points to your APIs or frameworks.  
 
 # API Reference
 
-https://cancerberosgx.github.io/plugin-container/index.html
+https://cancerberosgx.github.io/plugin-container/interfaces/iplugincontainer.html
 
 # Install 
 
@@ -39,7 +39,7 @@ plugins.install({
 
 const output = plugins.executeAll('hello world blabla world');
 console.log(output)
-// the output is the transformation, in orther, of all the plugins, in this case:
+// the output is the transformation, in other, of all the plugins, in this case:
 // 'avacadabrahello world loremipsum worldflumflumloremipsumsrpic'
 ```
 

@@ -12,7 +12,7 @@
     "test-js": "tsc && jasmine --config=spec/support/jasmine-js.json",
     "test-es3": "npm run build-es3 && jasmine --config=spec/support/jasmine-es3.json",
     "prepare": "tsc",
-    "doc": "tsc && typedoc --plugin typedoc-plugin-as-member-of --mode file --out docs src/index.ts",
+    "doc": "tsc && typedoc --options typedoc.ts --plugin typedoc-plugin-as-member-of",
     "lint": "tslint src/**/*.ts",
     "lint-fix": "tslint --fix src/**/*.ts",
     "tsc": "rm -rf types docs && tsc --project typedoc.js",
