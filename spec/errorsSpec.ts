@@ -6,7 +6,7 @@ describe('errors in plugins', () => {
     container = new PluginContainer();
   });
   
-  xit('by default, plugins throwing exceptions should allow the rest of plugins to execute', () => {
+  it('by default, plugins throwing exceptions should allow the rest of plugins to execute', () => {
     container.install({
       name: 'thrower plugin',
       priority: 1,
@@ -19,19 +19,21 @@ describe('errors in plugins', () => {
       name: 'good plugin',
       priority: 2,
       execute(input:any) {
-        return input.goodPluginGreets = 'hellofromgoodone';
+        input.goodPluginGreets = 'hellofromgoodone';
+        return input;
       },
     });
     container.install({
       name: 'good pluginbefore',
       priority: 0,
       execute(input:any) {
-        return input.pluginbefore = 'pluginbefore';
+        input.pluginbefore = 'pluginbefore';
+        return input;
       },
     });
     try {
       const obj:any = {};
-      var result = container.executeAll(obj);
+      const result = container.executeAll(obj);
       expect(obj.goodPluginGreets).toBe('hellofromgoodone');
     } catch (error) {
       fail(error);
