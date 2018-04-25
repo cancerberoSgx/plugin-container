@@ -56,6 +56,19 @@ describe('errors in plugins', () => {
       fail(error);
     }
   });
+  it('onErrorPolicy==throw should throw ', () => {
+    createContainerAndInstallPlugins({ onErrorPolicy: 'throw' });
+    const obj:any = {};
+    try {
+      const result = container.executeAll(obj);
+      fail('did not throw');
+    } catch (error) {
+      
+      expect(obj.firstPlugin).toBe('firstPluginGreet');
+      expect(obj.goodPluginGreets).toBe(undefined);
+      expect(obj.badPluginGreets).toBe('helloFromBadPlugin');
+    }
+  });
 
   // TODO: a sync plugin that throws inside a settimeout
 
